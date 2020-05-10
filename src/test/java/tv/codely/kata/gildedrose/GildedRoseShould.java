@@ -5,118 +5,127 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class GildedRoseShould {
-    private Item[] arrayWith(Item item) {
+    private Item[] withArray(Item item) {
         return new Item[]{item};
     }
 
     @Test
     public void testThatSellInValueIsDecreased() {
-        Item whateverItem = new Item("whatever", 10, 0);
+        Item whateveritem = new Item("whateveritem", 10, 20);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(whateverItem));
+        GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(whateverItem.sellIn, 9);
+        assertEquals(9, whateveritem.sellIn);
     }
 
     @Test
     public void testThatQualityValueIsDecreased() {
-        Item whateverItem = new Item("whatever", 1, 10);
+        Item whateveritem = new Item("whateveritem", 10, 15);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(whateverItem));
+        GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(whateverItem.quality, 9);
+        assertEquals(14, whateveritem.quality);
     }
 
     @Test
     public void testThatQualityDecreasesTwiceAsMuchWhenSellByIsPassed() {
-        Item whateverItem = new Item("whatever", 0, 10);
+        Item whateveritem = new Item("whateveritem", 0, 15);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(whateverItem));
+        GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(whateverItem.quality, 8);
+        assertEquals(13, whateveritem.quality);
     }
 
     @Test
-    public void testThatQualityIsNeverNegative() {
-        Item whateverItem = new Item("whatever", 0, 0);
+    public void testThatQualityIsNeverNegativeInADefaultQualityValue() {
+        Item whateveritem = new Item("whateveritem", 3, 0);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(whateverItem));
+        GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(whateverItem.quality, 0);
+        assertEquals(0, whateveritem.quality);
     }
 
     @Test
     public void testAgedBrieIncreasesQualityWithAge() {
-        Item agedBrie = new Item("Aged Brie", 5, 1);
+        Item agedBrie = new Item("Aged Brie", 3, 49);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(agedBrie));
+        GildedRose gildedRose = new GildedRose(withArray(agedBrie));
         gildedRose.updateQuality();
 
-        assertEquals(agedBrie.quality, 2);
+        assertEquals(50, agedBrie.quality);
     }
 
     @Test
     public void testQualityNeverIncreasesPastFifty() {
-        Item agedBrie = new Item("Aged Brie", 5, 50);
+        Item whateveritem = new Item("whateveritem", 3, 55);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(agedBrie));
+        GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(agedBrie.quality, 50);
+        assertEquals(50, whateveritem.quality);
     }
 
     @Test
-    public void testSulfurasNeverChanges() {
-        Item sulfuras = new Item("Sulfuras, Hand of Ragnaros", 0, 25);
+    public void testSulfurasNeverChangesSellIn() {
+        Item sulfuras = new Item("Sulfuras", 5, 80);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(sulfuras));
+        GildedRose gildedRose = new GildedRose(withArray(sulfuras));
         gildedRose.updateQuality();
 
-        assertEquals(sulfuras.quality, 25);
-        assertEquals(sulfuras.sellIn, 0);
+        assertEquals(5, sulfuras.sellIn);
+    }
+
+    @Test
+    public void testSulfurasNeverChangesQuality() {
+        Item sulfuras = new Item("Sulfuras", 3, 80);
+
+        GildedRose gildedRose = new GildedRose(withArray(sulfuras));
+        gildedRose.updateQuality();
+
+        assertEquals(80, sulfuras.quality);
     }
 
     @Test
     public void testBackstagePassIncreasesQualityByOneIfSellByGreaterThenTen() {
-        Item backstagePasses = new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20);
+        Item agedBrieBackstage = new Item("Backstage passes", 11, 30);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(backstagePasses));
+        GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(backstagePasses.quality, 21);
+        assertEquals(31, agedBrieBackstage.quality);
     }
 
     @Test
     public void testBackstagePassIncreasesQualityByTwoIfSellBySmallerThanTen() {
-        Item backstagePasses = new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20);
+        Item agedBrieBackstage = new Item("Backstage passes", 10, 30);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(backstagePasses));
+        GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(backstagePasses.quality, 22);
+        assertEquals(32, agedBrieBackstage.quality);
     }
 
     @Test
     public void testBackstagePassIncreasesQualityByThreeIfSellBySmallerThanFive() {
-        Item backstagePasses = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20);
+        Item agedBrieBackstage = new Item("Backstage passes", 5, 30);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(backstagePasses));
+        GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(backstagePasses.quality, 23);
+        assertEquals(33, agedBrieBackstage.quality);
     }
 
     @Test
     public void testBackstagePassLosesValueAfterSellByPasses() {
-        Item backstagePasses = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20);
+        Item agedBrieBackstage = new Item("Backstage passes", 0, 30);
 
-        GildedRose gildedRose = new GildedRose(arrayWith(backstagePasses));
+        GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(backstagePasses.quality, 0);
+        assertEquals(0, agedBrieBackstage.quality);
     }
 }
