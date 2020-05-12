@@ -11,7 +11,7 @@ public class GildedRoseShould {
 
     @Test
     public void testThatSellInValueIsDecreased() {
-        Item whateveritem = new Item("whateveritem", 10, 20);
+        Item whateveritem = new Whateveritem("whateveritem", 10, 20);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
@@ -21,7 +21,7 @@ public class GildedRoseShould {
 
     @Test
     public void testThatQualityValueIsDecreased() {
-        Item whateveritem = new Item("whateveritem", 10, 15);
+        Item whateveritem = new Whateveritem("whateveritem", 10, 15);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
@@ -31,7 +31,7 @@ public class GildedRoseShould {
 
     @Test
     public void testThatQualityDecreasesTwiceAsMuchWhenSellByIsPassed() {
-        Item whateveritem = new Item("whateveritem", 0, 15);
+        Item whateveritem = new Whateveritem("whateveritem", 0, 15);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
@@ -41,7 +41,7 @@ public class GildedRoseShould {
 
     @Test
     public void testThatQualityIsNeverNegativeInADefaultQualityValue() {
-        Item whateveritem = new Item("whateveritem", 3, 0);
+        Item whateveritem = new Whateveritem("whateveritem", 3, 0);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
@@ -51,7 +51,7 @@ public class GildedRoseShould {
 
     @Test
     public void testAgedBrieIncreasesQualityWithAge() {
-        Item agedBrie = new Item("Aged Brie", 3, 49);
+        Item agedBrie = new AgedBrie("Aged Brie", 3, 49);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrie));
         gildedRose.updateQuality();
@@ -61,7 +61,7 @@ public class GildedRoseShould {
 
     @Test
     public void testQualityNeverIncreasesPastFifty() {
-        Item whateveritem = new Item("whateveritem", 3, 55);
+        Item whateveritem = new Whateveritem("whateveritem", 3, 55);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
@@ -71,7 +71,7 @@ public class GildedRoseShould {
 
     @Test
     public void testSulfurasNeverChangesSellIn() {
-        Item sulfuras = new Item("Sulfuras", 5, 80);
+        Item sulfuras = new Sulfuras("Sulfuras", 5, 80);
 
         GildedRose gildedRose = new GildedRose(withArray(sulfuras));
         gildedRose.updateQuality();
@@ -81,7 +81,7 @@ public class GildedRoseShould {
 
     @Test
     public void testSulfurasNeverChangesQuality() {
-        Item sulfuras = new Item("Sulfuras", 3, 80);
+        Item sulfuras = new Sulfuras("Sulfuras", 3, 80);
 
         GildedRose gildedRose = new GildedRose(withArray(sulfuras));
         gildedRose.updateQuality();
@@ -91,7 +91,7 @@ public class GildedRoseShould {
 
     @Test
     public void testBackstagePassIncreasesQualityByOneIfSellByGreaterThenTen() {
-        Item agedBrieBackstage = new Item("Backstage passes", 11, 30);
+        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 11, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
@@ -101,7 +101,7 @@ public class GildedRoseShould {
 
     @Test
     public void testBackstagePassIncreasesQualityByTwoIfSellBySmallerThanTen() {
-        Item agedBrieBackstage = new Item("Backstage passes", 10, 30);
+        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 10, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
@@ -111,7 +111,7 @@ public class GildedRoseShould {
 
     @Test
     public void testBackstagePassIncreasesQualityByThreeIfSellBySmallerThanFive() {
-        Item agedBrieBackstage = new Item("Backstage passes", 5, 30);
+        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 5, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
@@ -121,7 +121,7 @@ public class GildedRoseShould {
 
     @Test
     public void testBackstagePassLosesValueAfterSellByPasses() {
-        Item agedBrieBackstage = new Item("Backstage passes", 0, 30);
+        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 0, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();

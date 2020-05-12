@@ -1,6 +1,6 @@
 package tv.codely.kata.gildedrose;
 
-public class Item {
+public abstract class Item {
     public String name;
     public int sellIn;
     public int quality;
@@ -10,6 +10,9 @@ public class Item {
         this.sellIn = sellIn;
         this.quality = quality;
     }
+
+    abstract protected void setQuality();
+    abstract protected void setQualityThresholds();
 
     @Override
     public String toString() {

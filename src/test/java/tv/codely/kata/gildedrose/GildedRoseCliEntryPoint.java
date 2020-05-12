@@ -3,16 +3,11 @@ package tv.codely.kata.gildedrose;
 public class GildedRoseCliEntryPoint {
     public static void main(String[] args) {
         System.out.println("*** Starting Gilded Rose Client Entry Point ***");
+
+        Item whateveritem = new Whateveritem("very common item", 1, 5);
+
         Item[] items = new Item[] {
-//            new Item("whatweveritem", 10, 20),
-//            new Item("whatweveritem", 10, 15),
-//            new Item("whatweveritem", 1, 25),
-//            new Item("whatweveritem", 1, -25),
-//            new Item("whatweveritem", 3, 0),
-//            new Item("whatweveritem", 3, 55),
-//            new Item("Aged Brie", 3, 50),
-            new Item("Backstage passes", 11, 25),
-//            new Item("Sulfuras", 3, 80),
+            whateveritem
         };
 
         GildedRose gildedRose = new GildedRose(items);
