@@ -6,14 +6,9 @@ public class Sulfuras extends Item {
     }
 
     @Override
-    protected void setQuality() {
+    protected void calculateQuality() {
         System.out.println("Sulfuras is a lengedary item and never changes its sellin and quality: " +
                 this.sellIn + " " + this.quality);
         return;
-    }
-
-    @Override
-    protected void setQualityThresholds() {
-
     }
 }

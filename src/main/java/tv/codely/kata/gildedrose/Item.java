@@ -11,11 +11,22 @@ public abstract class Item {
         this.quality = quality;
     }
 
-    abstract protected void setQuality();
-    abstract protected void setQualityThresholds();
+    abstract protected void calculateQuality();
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSellIn() {
+        return sellIn;
+    }
+
+    public int getQuality() {
+        return quality;
+    }
 
     @Override
     public String toString() {
-        return this.name + " " + this.sellIn + " " + this.quality;
+        return this.getName() + " " + this.getSellIn() + " " + this.getQuality();
     }
 }

@@ -6,17 +6,18 @@ public class Whateveritem extends Item {
     }
 
     @Override
-    protected void setQuality() {
+    protected void calculateQuality() {
         if (this.sellIn <= 0) {
             this.quality = this.quality - 1;
         }
 
         this.sellIn = this.sellIn - 1;
         this.quality = this.quality - 1;
+
+        this.setQualityThresholds();
     }
 
-    @Override
-    protected void setQualityThresholds() {
+    private void setQualityThresholds() {
         if (this.quality < 0) {
             this.quality = 0;
         }

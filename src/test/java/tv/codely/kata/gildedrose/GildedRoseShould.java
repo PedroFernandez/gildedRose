@@ -11,57 +11,57 @@ public class GildedRoseShould {
 
     @Test
     public void testThatSellInValueIsDecreased() {
-        Item whateveritem = new Whateveritem("whateveritem", 10, 20);
+        Item whateveritem = ItemFactory.createItem("whatever", "I am generic item", 10, 20);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(9, whateveritem.sellIn);
+        assertEquals(9, whateveritem.getSellIn());
     }
 
     @Test
     public void testThatQualityValueIsDecreased() {
-        Item whateveritem = new Whateveritem("whateveritem", 10, 15);
+        Item whateveritem = ItemFactory.createItem("whatever", "Generic WhatEver", 10, 15);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(14, whateveritem.quality);
+        assertEquals(14, whateveritem.getQuality());
     }
 
     @Test
     public void testThatQualityDecreasesTwiceAsMuchWhenSellByIsPassed() {
-        Item whateveritem = new Whateveritem("whateveritem", 0, 15);
+        Item whateveritem = ItemFactory.createItem("whatever", "Generic WhatEver 2", 0, 15);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(13, whateveritem.quality);
+        assertEquals(13, whateveritem.getQuality());
     }
 
     @Test
     public void testThatQualityIsNeverNegativeInADefaultQualityValue() {
-        Item whateveritem = new Whateveritem("whateveritem", 3, 0);
+        Item whateveritem = ItemFactory.createItem("whatever", "Generic WhatEver 2", 3, 0);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
 
-        assertEquals(0, whateveritem.quality);
+        assertEquals(0, whateveritem.getQuality());
     }
 
     @Test
     public void testAgedBrieIncreasesQualityWithAge() {
-        Item agedBrie = new AgedBrie("Aged Brie", 3, 49);
+        Item agedBrie = ItemFactory.createItem("agedbrie", "Aged Brie Deluxe", 3, 49);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrie));
         gildedRose.updateQuality();
 
-        assertEquals(50, agedBrie.quality);
+        assertEquals(50, agedBrie.getQuality());
     }
 
     @Test
     public void testQualityNeverIncreasesPastFifty() {
-        Item whateveritem = new Whateveritem("whateveritem", 3, 55);
+        Item whateveritem = ItemFactory.createItem("whatever", "whateveritem", 3, 55);
 
         GildedRose gildedRose = new GildedRose(withArray(whateveritem));
         gildedRose.updateQuality();
@@ -71,61 +71,61 @@ public class GildedRoseShould {
 
     @Test
     public void testSulfurasNeverChangesSellIn() {
-        Item sulfuras = new Sulfuras("Sulfuras", 5, 80);
+        Item sulfuras = ItemFactory.createItem("sulfuras","Sulfuras Pata Negra", 5, 80);
 
         GildedRose gildedRose = new GildedRose(withArray(sulfuras));
         gildedRose.updateQuality();
 
-        assertEquals(5, sulfuras.sellIn);
+        assertEquals(5, sulfuras.getSellIn());
     }
 
     @Test
     public void testSulfurasNeverChangesQuality() {
-        Item sulfuras = new Sulfuras("Sulfuras", 3, 80);
+        Item sulfuras = ItemFactory.createItem("sulfuras","Sulfuras Pata Negra", 3, 80);
 
         GildedRose gildedRose = new GildedRose(withArray(sulfuras));
         gildedRose.updateQuality();
 
-        assertEquals(80, sulfuras.quality);
+        assertEquals(80, sulfuras.getQuality());
     }
 
     @Test
     public void testBackstagePassIncreasesQualityByOneIfSellByGreaterThenTen() {
-        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 11, 30);
+        Item agedBrieBackstage = ItemFactory.createItem("backstagepasses","Backstage Cheese", 11, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(31, agedBrieBackstage.quality);
+        assertEquals(31, agedBrieBackstage.getQuality());
     }
 
     @Test
     public void testBackstagePassIncreasesQualityByTwoIfSellBySmallerThanTen() {
-        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 10, 30);
+        Item agedBrieBackstage = ItemFactory.createItem("backstagepasses","Backstage Vine", 10, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(32, agedBrieBackstage.quality);
+        assertEquals(32, agedBrieBackstage.getQuality());
     }
 
     @Test
     public void testBackstagePassIncreasesQualityByThreeIfSellBySmallerThanFive() {
-        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 5, 30);
+        Item agedBrieBackstage = ItemFactory.createItem("backstagepasses","Backstage Fruit", 5, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(33, agedBrieBackstage.quality);
+        assertEquals(33, agedBrieBackstage.getQuality());
     }
 
     @Test
     public void testBackstagePassLosesValueAfterSellByPasses() {
-        Item agedBrieBackstage = new Backstagepasses("Backstage passes", 0, 30);
+        Item agedBrieBackstage = ItemFactory.createItem("backstagepasses","Backstage Fish", 0, 30);
 
         GildedRose gildedRose = new GildedRose(withArray(agedBrieBackstage));
         gildedRose.updateQuality();
 
-        assertEquals(0, agedBrieBackstage.quality);
+        assertEquals(0, agedBrieBackstage.getQuality());
     }
 }

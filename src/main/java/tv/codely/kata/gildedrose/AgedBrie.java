@@ -6,12 +6,7 @@ public class AgedBrie extends Item {
     }
 
     @Override
-    protected void setQuality() {
+    protected void calculateQuality() {
         this.quality = this.quality + 1;
-    }
-
-    @Override
-    protected void setQualityThresholds() {
-        return;
     }
 }

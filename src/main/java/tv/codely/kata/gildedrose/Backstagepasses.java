@@ -6,7 +6,7 @@ public class Backstagepasses extends Item {
     }
 
     @Override
-    protected void setQuality() {
+    protected void calculateQuality() {
         if (this.sellIn >= 11) {
             this.quality = this.quality + 1;
         }
@@ -24,10 +24,5 @@ public class Backstagepasses extends Item {
         }
 
         this.sellIn = this.sellIn - 1;
-    }
-
-    @Override
-    protected void setQualityThresholds() {
-
     }
 }
